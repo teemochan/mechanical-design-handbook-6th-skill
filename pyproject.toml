@@ -1,0 +1,16 @@
+[project]
+name = "mechanical-design-handbook-6th-skill"
+version = "1.0.0"
+description = "Open-source token-efficient AI Agent Skill & local SQLite FTS5 knowledge base builder for Mechanical Design Handbook (6th Ed.)"
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.10"
+# Core search/toc/table/std/read CLI requires ONLY the Python standard library once handbook.db is built.
+dependencies = []
+
+[project.optional-dependencies]
+# Required for building handbook.db locally (`scripts/build_kb.py`) and rendering page PNGs (`render`)
+pdf = [
+    "pypdfium2>=4.30.0",
+    "pillow>=10.0.0",
+]

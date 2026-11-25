@@ -1,0 +1,27 @@
+# Copyrighted source PDFs (must remain local, never commit)
+*.pdf
+
+# Locally generated knowledge base artifacts (generated from user's own PDFs via build_kb.py)
+handbook.db
+handbook.db-wal
+handbook.db-shm
+handbook.db-journal
+INDEX.md
+toc/
+
+# On-demand rendered page PNGs
+rendered/
+*.png
+
+# Local virtual environments & Python caches
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# OS / Editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
