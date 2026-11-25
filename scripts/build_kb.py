@@ -19,7 +19,6 @@ import sqlite3
 import argparse
 import unicodedata
 from collections import defaultdict
-import pypdfium2 as pdfium
 
 ROOT_DIR = os.path.abspath(os.environ.get('HANDBOOK_PDF_DIR') or os.path.join(os.path.dirname(__file__), '..', '..'))
 KB_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
@@ -412,6 +411,15 @@ def parse_cn_volume_toc(vol_id, pdf_doc, bookmarks, book_to_pdf, total_pages):
 
 
 def build_database():
+    try:
+        import pypdfium2 as pdfium
+    except ImportError:
+        raise SystemExit(
+            'ERROR: `build_kb.py` requires `pypdfium2` (and `pillow`).\n'
+            'Install optional PDF dependencies first:\n'
+            '  uv sync --extra pdf\n'
+            '  # or: pip install pypdfium2 pillow'
+        )
     t_all = time.time()
     os.makedirs(TOC_DIR, exist_ok=True)
     if os.path.exists(DB_PATH):
